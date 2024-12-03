@@ -91,6 +91,7 @@ model Order{
   status Status? @default(PENDING)
   amount Float?
   orderItems OrderItems[]
+  created_at DateTime @default(now())
 }
 
 enum Status {

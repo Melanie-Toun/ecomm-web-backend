@@ -40,8 +40,8 @@ npm i bcryptjs(used for formatting password)
 
 to create a new category:
 {
-  "name":"product 1",
-  "description": "this is product 1"
+  "name":"category 2",
+  "description": "this is testing category 3"
 }
 
 register req data::
