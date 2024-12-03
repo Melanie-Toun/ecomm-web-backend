@@ -1,0 +1,128 @@
+npm init --yes
+npm i express or npm i -g express
+npm i -g prisma or npm i prisma
+npm i @prisma/client or npm i -g @prisma/client
+npx prisma init
+npm i -g nodemon or npm i nodemon 
+
+then create a file call it server.js or index.js
+
+when done with configuration run nodemon server.js or nodemon index.js depending on what your base file name is(if its not working in powershell then go to your command prompt(just type cmd and enter it))...
+
+nodemon always us to run our server when new changes are made to our server
+
+The flow of your project=
+models
+controllers
+routers
+server.js(base file)
+
+Prisma allows us convert our normal code to sql
+Controller is where you write your API methods(there is a controller from each model)
+in order to see what you are doing on the browser npx prisma studio
+
+DATABASE_URL="postgresql://db_user:db_user_password@localhost:db_port/db_name?schema=public"
+
+In commmand prompt=
+psql -U postgres
+CREATE DATABASE db_name(ecomj24)
+
+to register a model in the DATABASE(whenever you create a model run the command)
+run:
+npx prisma migrate dev --name "migration name(create_category_)"
+
+npm i cloudinary
+npm i multer
+
+npm i jsonwebtoken
+
+npm i bcryptjs(used for formatting password)
+
+to create a new category:
+{
+  "name":"product 1",
+  "description": "this is product 1"
+}
+
+register req data::
+{
+  "firstName":"auracule",
+  "lastName": "james",
+  "role": "USER",
+  "address": "box 27 72 road featsc",
+  "email": "auracule@support.com",
+  "phone": "34567890",
+  "password": "qwerty456",
+  "confirmPassword": "qwerty456"
+}
+
+login req data::
+{
+  "email": "auracule@support.com",
+  "password": "qwerty456"
+}
+
+add to cart req data::
+
+{
+  "productId": 402,
+  "quantity": 1
+}
+
+get cart req data::
+{
+"userId": 2
+}
+
+update cart req data::
+{
+"productId": 2,
+"quantity": 2
+}
+
+delete cart req data::
+{
+"productId": 1
+}
+
+req data to initiate payment:
+{
+  "firstName": "Ade",
+"lastName":"Good",
+"email":"goodluckmelanie@gmail.com",
+"address":"hhdjhdjk",
+"phone":"97644",
+"amount": 289
+}
+PROCESS TO INITIATE PAYMENT
+-- add to cart if you dont have cart available
+-- initiate payment using the initiate payment route and the req data
+-- after initiating payment and it is successful, copy the link(data) that you would use to pay and post it on the browser and use flutterwave test card to fill the payment
+-- after payment is successful it would redirect you to an url, copy the link and paste it in your url in thunderclient to verify payment
+-- copy the message you got after initiating payment and paste it in your body in thunderclient and edit it till its left with data and orderId, change the data to transaction_Id and copy the transaction id in the link you have on your browser (the last number )
+
+productController
+// exports.createProduct = async(req, res) => {
+//     const { categoryId, name, description, price, featured, trending} = req.body;
+//     try {
+//         const category = await prisma.category.findUnique({ where: { id: categoryId }})
+//         if(!category) return res.status(400).json({ success: false, message: "Invalid categoryId"})
+
+//             let result;
+//             try {
+//                 const image = await cloudinary.uploader.upload(`data:${req.file.mimeType};base64,${req.file.toString("base64")}`, {
+//                     folder: "product_image"
+//                 })
+//                 console.log(image);
+//                 result= image.secure_url
+//             } catch (error) {
+//                 console.log("Did not upload successfully");
+//             }
+//             const product = await prisma.product.create({ data: {categoryId, name, image: result, description, price, featured, trending}})
+//         if(!product) return res.status(400).json({ success: false, message: "product not added"})
+//             res.status(201).json({ success: true, message: "product created successfully", data: product})
+//     } catch (error) {
+//         console.log({ error: error.message });
+//     }
+// }
+
