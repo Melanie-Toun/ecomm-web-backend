@@ -26,7 +26,7 @@ exports.initiatePayment = async(req, res) => {
           tx_ref: orderId,
           amount,
           currency: "NGN",
-          redirect_url: "*",
+          redirect_url: "https://ecommerce-navy-kappa-26.vercel.app/thankyou",
           // redirect_url: 'http://localhost:8000/api/verify-payment',
           customer: {
             email: users.email || email,
