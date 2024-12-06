@@ -16,7 +16,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true })) 
 app.use(
     cors({
-        origin: "https://ecommerce-navy-kappa-26.vercel.app",
+        origin: "*",
+        // origin: "https://ecommerce-navy-kappa-26.vercel.app",
         credentials: true,
         allowedHeaders: ["Content-Type", "Authorization", "auth-token"],
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
